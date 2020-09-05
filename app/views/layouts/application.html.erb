@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Artesania</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,5 +14,6 @@
   <body>
     <%= render 'layouts/header'%>
     <%= yield %>
+    <%= javascript_include_tag "script", "data-turbolinks-track" => true %> 
   </body>
 </html>
