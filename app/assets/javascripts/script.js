@@ -1,20 +1,29 @@
-let toggle = document.getElementById("toggle")
-const navbar = document.getElementById("navbar")
-
-/* Opens and Closes the navbar */
-function toggleNavbar() {
-    if (navbar.classList.contains("active")) {
-        navbar.classList.remove("active");
-
-        // adds the menu (hamburger) icon
-        toggle.querySelector("a").innerHTML = "<i class=’fas fa-bars’></i>";
-    } else {
-        navbar.classList.add("active");
-
-        // adds the close (x) icon
-        toggle.querySelector("a").innerHTML = "<i class=’fas fa-times’></i>";
+/*---- will be used to give navbar the collapse/expand event -----*/
+const navBarEvent = () => {
+    let toggle = document.getElementById("toggle")
+    let navbar = document.getElementById("navbar")
+    
+    //toggles the navbar open/close
+    const addEvent = () => {
+        if(toggle && navbar){
+            toggle.addEventListener("click", toggleNavBar)
+        }
     }
+
+    const toggleNavBar = () => {
+        // otherwise, remove menu icon, add X icon and close menu
+        if (navbar.classList.contains("active")) {
+            navbar.classList.remove("active")
+            toggle.querySelector("a").innerHTML = `<i class="fas fa-bars"></i>`
+        } else {
+            navbar.classList.add("active")
+            toggle.querySelector("a").innerHTML = `<i class="fas fa-times"></i>`
+        }
+    }
+
+    return { addEvent }
 }
 
-/* Event Listener */
-toggle.addEventListener("click", toggleNavbar, false);
+document.addEventListener("turbolinks:load", (e) => {
+    navBarEvent().addEvent()
+})
