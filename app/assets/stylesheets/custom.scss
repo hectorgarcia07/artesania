@@ -21,13 +21,13 @@ html, body{
     display: none;
 }
 
-#navbar li a{
+.navItem a, #toggle a, #logo a{
     display: block;
     text-align: center;
     padding: 0.7em;
     text-decoration: none;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 //will be used to display the dropdown on
@@ -43,7 +43,23 @@ html, body{
     color: rgb(202, 202, 202);
 }
 
-.logo{
-    font-size: 1.5rem;
+#logo a{
+    font-size: 1.4rem;
 }
 
+/*--------- Desktop View ----------*/
+@media  all and (min-width: 935px) {
+    #navbar {
+        align-items: center;     
+        flex-wrap: nowrap;
+    }
+    
+    .navItem {
+        position: relative;
+        display: block; 
+        width: auto;
+    }
+    #toggle{
+        display: none;
+    }
+}
