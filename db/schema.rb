@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_04_014420) do
+ActiveRecord::Schema.define(version: 2020_09_09_021347) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -35,11 +35,22 @@ ActiveRecord::Schema.define(version: 2020_09_04_014420) do
 
   create_table "categories", force: :cascade do |t|
     t.integer "product_id"
-    t.string "type"
+    t.string "productType"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["productType"], name: "index_categories_on_productType"
     t.index ["product_id"], name: "index_categories_on_product_id"
-    t.index ["type"], name: "index_categories_on_type"
+  end
+
+  create_table "color_by_sizes", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "size_id"
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["color"], name: "index_color_by_sizes_on_color"
+    t.index ["product_id"], name: "index_color_by_sizes_on_product_id"
+    t.index ["size_id"], name: "index_color_by_sizes_on_size_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -50,9 +61,7 @@ ActiveRecord::Schema.define(version: 2020_09_04_014420) do
     t.string "gender"
     t.string "age"
     t.decimal "price", precision: 8, scale: 2
-    t.string "color"
     t.index ["age"], name: "index_products_on_age"
-    t.index ["color"], name: "index_products_on_color"
     t.index ["gender"], name: "index_products_on_gender"
     t.index ["price"], name: "index_products_on_price"
   end

@@ -1,29 +1,43 @@
-/*---- will be used to give navbar the collapse/expand event -----*/
+/*---- will be used to give navBar the collapse/expand event -----*/
 const navBarEvent = () => {
     let toggle = document.getElementById("toggle")
-    let navbar = document.getElementById("navbar")
+    let navTag = document.getElementById("navTag")
+    let navBar = document.getElementById("navbar")
+    let navBarContainer = document.getElementById("nav-container")
     
-    //toggles the navbar open/close
+    //toggles the navBar open/close
     const addEvent = () => {
-        if(toggle && navbar){
-            toggle.addEventListener("click", toggleNavBar)
+        if (toggle && navTag && navBarContainer && navBar){
+            toggle.addEventListener("click", togglenavBar)
         }
     }
 
-    const toggleNavBar = () => {
+    const togglenavBar = () => {
         // otherwise, remove menu icon, add X icon and close menu
-        if (navbar.classList.contains("active")) {
-            navbar.classList.remove("active")
+        if (navTag.classList.contains("active")){
+            navTag.classList.remove("active")
             toggle.querySelector("a").innerHTML = `<i class="fas fa-bars"></i>`
+            navTag.classList.add("hideNav")
         } else {
-            navbar.classList.add("active")
+            navTag.classList.add("active")
             toggle.querySelector("a").innerHTML = `<i class="fas fa-times"></i>`
+
+            navTag.classList.remove("hideNav")
+            navBarContainer.classList.add("navColumn")
+            navBar.classList.add("navColumn")
         }
     }
-
     return { addEvent }
 }
 
 document.addEventListener("turbolinks:load", (e) => {
     navBarEvent().addEvent()
+
+    window.addEventListener("resize", function () {
+        if (window.innerWidth > 935){
+            navTag.classList.remove("active")
+            toggle.querySelector("a").innerHTML = `<i class="fas fa-bars"></i>`
+            navTag.classList.add("hideNav")
+        }
+    });
 })

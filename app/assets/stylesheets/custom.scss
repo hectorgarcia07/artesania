@@ -3,63 +3,82 @@ html, body{
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
 }
+/*---------------------- MOBILE CSS ----------------------*/
 
-/* ----- Mobile View of CSS ------*/
-#navbar{
-    background-color: rgb(58, 58, 58);
-    padding: 0;
-    margin: 0;
+/*---- NAVBAR ------*/
+#nav-container{
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    background-color: rgb(58, 58, 58);
+}
+
+.navComponents{
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    list-style-type: none;
-}
-
-.navItem{
     width: 100%;
-    display: none;
+    padding: 0.8em 0.6em;
 }
 
-.navItem a, #toggle a, #logo a{
-    display: block;
-    text-align: center;
-    padding: 0.7em;
+#navTag{
+    width: 100%;
+}
+
+#navbar{
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+}
+
+#logo, #navbar li a, #toggle a{
     text-decoration: none;
     color: white;
     font-size: 1.1rem;
 }
 
-//will be used to display the dropdown on
-.active .navItem{
-    display: block;
+#logo{
+    font-size: 1.5rem;
 }
 
-.navItem a{
-    border-top: 2px solid rgb(46, 46, 46);
+.navItem{
+    padding: 0.7em 0;
+    text-align: center;
+    border-top: 1px solid rgb(202, 202, 202);
 }
 
-.navItem a:hover, .fa-bars:hover{
-    color: rgb(202, 202, 202);
+//////// Used to change responsive behavior
+.hideNav{
+    display: none;
 }
 
-#logo a{
-    font-size: 1.4rem;
+.navColumn{
+    flex-direction: column;
 }
+//////////////////////
 
-/*--------- Desktop View ----------*/
 @media  all and (min-width: 935px) {
-    #navbar {
-        align-items: center;     
-        flex-wrap: nowrap;
-    }
-    
-    .navItem {
-        position: relative;
-        display: block; 
-        width: auto;
+    #nav-container{
+        flex-direction: row;
+        justify-content: space-between;
     }
     #toggle{
         display: none;
+    }
+
+    .navComponents{
+        width: auto;
+    }
+
+    #navTag{
+        width: auto;
+        display: block;
+    }
+    #navbar{
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+    .navItem{
+        border: none;
+        padding-right: 0.6em;
     }
 }
