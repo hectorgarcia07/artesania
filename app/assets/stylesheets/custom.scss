@@ -3,6 +3,9 @@ html, body{
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
 }
+h1{
+
+}
 /*---------------------- MOBILE CSS ----------------------*/
 
 /*---- NAVBAR ------*/
@@ -37,7 +40,7 @@ html, body{
 }
 
 #logo{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 .navItem{
@@ -54,6 +57,35 @@ html, body{
 .navColumn{
     flex-direction: column;
 }
+
+/*---------------------- BODY CONTAINER ----------------------*/
+.container{
+    display: flex;
+}
+
+/*---------------------- FORM CONTAINER ----------------------*/
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.form-style{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field-group{
+    margin-top: 1.5em;
+}
+
+.form-label{
+    display: block;
+    margin-bottom: 0.4em;
+}
+
 //////////////////////
 
 @media  all and (min-width: 935px) {
@@ -79,6 +111,9 @@ html, body{
     }
     .navItem{
         border: none;
+        padding-right: 0.6em;
+    }
+    .navItem:last-child{
         padding-right: 0.6em;
     }
 }

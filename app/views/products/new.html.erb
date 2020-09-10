@@ -1,0 +1,35 @@
+<div class="form-container">
+    <h1>Create New Product</h1>
+
+    <%= form_with model: @product, local: true, class: "form-style" do |f| %>
+        <div class="form-field-group">
+            <%= file_field_tag 'Picture of Product' %>
+            <%= f.file_field :images %>
+        </div>
+        <div class="form-field-group">
+            <%= f.label :name, class: "form-label"%>
+            <%= f.text_field :name%>
+        </div>
+        <div class="form-field-group">
+            <%= f.label :gender, class: "form-label"%>
+            <%= select_tag(:gender, raw('<option value="male">Male</option>
+                                        <option value="male">Female</option>')) %>
+        </div>
+        <div class="form-field-group">
+            <%= f.label :age, class: "form-label"%>
+            <%= select_tag(:age, raw('<option value="men">Man</option>
+                                        <option value="woman">Woman</option>
+                                        <option value="boys">Boys</option>
+                                        <option value="girls">Girls</option>')) %>
+        </div>
+        <div class="form-field-group">
+            <%= f.label :price, class: "form-label"%>
+            <%= f.text_field :price%>
+        </div>
+        <div class="form-field-group">
+            <%= fields_for :category, @product.category do |category| %>
+                
+            <% end %>
+        </div>
+    <% end %>
+</div>
