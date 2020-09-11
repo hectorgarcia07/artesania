@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_09_021347) do
+ActiveRecord::Schema.define(version: 2020_09_11_013102) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -34,12 +34,19 @@ ActiveRecord::Schema.define(version: 2020_09_09_021347) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.integer "product_id"
     t.string "productType"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["productType"], name: "index_categories_on_productType"
-    t.index ["product_id"], name: "index_categories_on_product_id"
+  end
+
+  create_table "categorizations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "product_id"
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_categorizations_on_category_id"
+    t.index ["product_id"], name: "index_categorizations_on_product_id"
   end
 
   create_table "color_by_sizes", force: :cascade do |t|
@@ -64,6 +71,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_021347) do
     t.index ["age"], name: "index_products_on_age"
     t.index ["gender"], name: "index_products_on_gender"
     t.index ["price"], name: "index_products_on_price"
+    t.index [nil, nil, nil], name: "index_products_on_product_id_and_MX_and_US", unique: true
   end
 
   create_table "sizes", force: :cascade do |t|

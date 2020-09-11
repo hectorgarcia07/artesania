@@ -7,6 +7,8 @@ class ProductsController < ApplicationController
 
     def new
         @product = Product.new
+        @product.categories.new
+        
     end
 
     def edit

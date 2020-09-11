@@ -1,6 +1,7 @@
 class Category < ApplicationRecord
-    belongs_to :product
+    has_many :categorizations
+    has_many :products, through: :categorizations
     
-    validates :product_id, presence: true
-    validates :productType, presence: true, length: { maximum: 50, minimum: 1 }
+    validates :productType, presence: true, length: { maximum: 50, minimum: 1 },
+                                            uniqueness: true
 end
