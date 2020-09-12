@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
     has_many :color_by_sizes
-    has_many :sizes, through: :color_by_sizes
+    has_many :product_sizes, through: :color_by_sizes
 
     has_many :categorizations
     has_many :categories, through: :categorizations
