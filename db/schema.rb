@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_12_014947) do
+ActiveRecord::Schema.define(version: 2020_09_14_232421) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -51,26 +51,18 @@ ActiveRecord::Schema.define(version: 2020_09_12_014947) do
 
   create_table "color_by_sizes", force: :cascade do |t|
     t.integer "product_id"
-    t.integer "product_size_id"
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["color"], name: "index_color_by_sizes_on_color"
-    t.index ["product_id"], name: "index_color_by_sizes_on_product_id"
-    t.index ["product_size_id"], name: "index_color_by_sizes_on_product_size_id"
-  end
-
-  create_table "product_sizes", force: :cascade do |t|
-    t.string "US"
     t.string "MX"
+    t.string "US"
     t.integer "quantity"
-    t.integer "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["MX"], name: "index_product_sizes_on_MX"
-    t.index ["US"], name: "index_product_sizes_on_US"
-    t.index ["product_id", "MX", "US"], name: "index_product_sizes_on_product_id_and_MX_and_US", unique: true
-    t.index ["product_id"], name: "index_product_sizes_on_product_id"
+    t.index ["MX"], name: "index_color_by_sizes_on_MX"
+    t.index ["US"], name: "index_color_by_sizes_on_US"
+    t.index ["color"], name: "index_color_by_sizes_on_color"
+    t.index ["product_id", "MX", "US"], name: "index_color_by_sizes_on_product_id_and_MX_and_US", unique: true
+    t.index ["product_id"], name: "index_color_by_sizes_on_product_id"
+    t.index ["quantity"], name: "index_color_by_sizes_on_quantity"
   end
 
   create_table "products", force: :cascade do |t|
